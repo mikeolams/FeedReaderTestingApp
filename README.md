@@ -5,7 +5,45 @@ Feed Reader Testing App project 4 of Udacity
 
 # Project Overview
 
-In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
+This project is a web-based application that reads RSS feeds. It is the fourth project on my Front End Course. This App included [Jasmine](http://jasmine.github.io/) and an incomplete test suite that I am required to complete. This I have worked on, to complete all the test suites and ensure the functionality of the App according to the test suites.
+
+# Steps to run this test
+
+	## for the test suite named `"RSS Feeds"` 
+1. Edit the `allFeeds` variable in **./js/app.js** to make the provided test fail and see how Jasmine visualizes this failure in your application.
+2. Return the `allFeeds` variable to a passing state.
+3. Edit any of the URL of the `allFeeds` object to be undefined or as empty or completly remove the URL to make the test fail.
+4. Restore the edit to return the app to a passing state.
+5. Repeat step 3 and 4 but this time for the name property of the `allFeeds` object.
+	
+	## for the test suite named `"The menu"`
+6. In the **./index.html** edit the body element by setting the class to empty to make the provided test fail.
+7. Return the class value editted to restore to the App passing state.
+8. in the **./js/app.js** comment out this code snippet below to make the provided test fail.
+`menuIcon.on('click', function() {
+        $('body').toggleClass('menu-hidden');
+    });`
+9. Uncomment the code to return to the passing state.
+	
+	## for the test suite named `"Initial Entries"`
+10. in the **./js/app.js** file comment out this code snippet below to make the provided test fail.
+`var container = $('.feed'),
+                 title = $('.header-title'),
+                 entries = result.feed.entries,
+                 entriesLen = entries.length,
+                 entryTemplate = Handlebars.compile($('.tpl-entry').html());
+             title.html(feedName);`
+11.Then uncomment the code to return to the passing state.
+
+	## for the test suite named `"New Feed Selection"`
+12. in the **./js/app.js** file comment out this code snippet below to make the provided test fail.
+`var container = $('.feed'),
+                 title = $('.header-title'),
+                 entries = result.feed.entries,
+                 entriesLen = entries.length,
+                 entryTemplate = Handlebars.compile($('.tpl-entry').html());
+             title.html(feedName);`
+13.Then uncomment the code to return to the passing state.
 
 
 ## Why this Project?
@@ -26,9 +64,9 @@ You will learn how to use Jasmine to write a number of tests against a pre-exist
 * Good tests give you the ability to quickly analyze whether new code breaks an existing feature within your codebase, without having to manually test all of the functionality.
 
 
-# How will I complete this project?
+# How I completed this project?
 
-Review the Feed Reader Testing [Project Rubric](https://review.udacity.com/#!/projects/3442558598/rubric)
+I review the Feed Reader Testing [Project Rubric](https://review.udacity.com/#!/projects/3442558598/rubric)
 
 1. Take the JavaScript Testing [course](https://www.udacity.com/course/ud549)
 2. Download the [required project assets](http://github.com/udacity/frontend-nanodegree-feedreader).
