@@ -86,40 +86,35 @@ $(function() {
             expect(entriesLen > 0).toBe(true);
             // done();
         });
-         })
-        /* TODO: Write a new test suite named "New Feed Selection" */
+    })
+    /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-         let entryContainer = document.querySelector(".feed");
-         gh = [];
-         gj =[];
-
-         beforeEach(function(done) {
-            loadFeed(0,function(a,done){loadFeed(1, done);
-            console.log(entryContainer.children[0]);
+        let entryContainer = document.querySelector(".feed");
+        testFeedOne = [];
+        testFeedTwo = [];
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                // this function gets executed once loadFeed(0) has recevied a data and
+                // put them into DOM 
+                for (item of entryContainer.children) {
+                    testFeedOne.push(item.innerText)
+                };
+                // console.log(testFeedOne);
+                loadFeed(1, function() {
+                    for (item of entryContainer.children) {
+                        testFeedTwo.push(item.innerText);
+                    };
+                    done();
+                    // console.log(testFeedTwo);
+                })
+            })
         });
-            // console.log(entryContainer.children[0]);
-            // for(item of entryContainer.children){gh.push(item.innerText)};
-            // console.log(gh);
-             // loadFeed(1, done);
-             // console.log(entryContainer.children[0]);
-        //      setTimeout(() => {for(item of entryContainer.children){
-        //             gj.push(item.innerText);
-        //             console.log(gj); 
-        //     };
-        //      // console.log(gj);  
-        // }, 3000);
-           
-            // done();
-        });
-
-
         it('New feed content changes', function() {
-            // let entryContainer = document.querySelector(".feed");
-            expect(gh[0] == gj[0]).not.toBe(true);
+            expect(testFeedOne[0] == testFeedTwo[0]).not.toBe(true);
         });
     })
 }());

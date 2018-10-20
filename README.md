@@ -36,14 +36,20 @@ This project is a web-based application that reads RSS feeds. It is the fourth p
 11.Then uncomment the code to return to the passing state.
 
 	## for the test suite named `"New Feed Selection"`
-12. in the **./js/app.js** file comment out this code snippet below to make the provided test fail.
-`var container = $('.feed'),
-                 title = $('.header-title'),
-                 entries = result.feed.entries,
-                 entriesLen = entries.length,
-                 entryTemplate = Handlebars.compile($('.tpl-entry').html());
-             title.html(feedName);`
-13.Then uncomment the code to return to the passing state.
+12. in the **./js/app.js** file copy the first feed and use it to overwrite the second feed to make the provided test fail.
+
+thus the allfeeds first 2 elements will be as shown below:
+`var allFeeds = [{
+      name: 'Udacity Blog',
+        url: 'http://blog.udacity.com/feed'
+}, {
+    name: 'Udacity Blog',
+        url: 'http://blog.udacity.com/feed'
+}, ....,
+....
+}];`
+
+13.Then undo the change in step 12 to return to the passing state.
 
 
 ## Why this Project?
