@@ -20,6 +20,59 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
+        let urlStatus,
+            emptyCount = 0,
+            definedCount = 0,
+            undefinedCount = 0;
+        let feedNameSet, nameCount = 0,
+            emptyNameCount = 0;
+        for (feed of allFeeds) {
+            //check for url properties
+            switch (feed.hasOwnProperty('url')) {
+                case true:
+                    definedCount += 1;
+                    if (feed.url == '') {
+                        emptyCount += 1;
+                        // console.log(`undefine ${undefinedCount} ${definedCount} ${emptyCount} ${urlStatus}`)
+                    }
+                    // console.log(`define ${definedCount} ${allFeeds.length}`)
+                    if (emptyCount > 0) {
+                        urlStatus = "url is not defined";
+                    } else {
+                        urlStatus = "url is defined";
+                    }
+                    break;
+                case false:
+                    // urlIsDefined =false;
+                    undefinedCount += 1;
+                    // urlIsNotEmpty =true;
+                    console.log(`undefine ${undefinedCount} ${allFeeds.length}`)
+                    break;
+            }
+            //check for name properties
+            switch (feed.hasOwnProperty('name')) {
+                case true:
+                    nameCount += 1;
+                    if (nameCount == allFeeds.length) {
+                        feedNameSet = "name is defined";
+                    }
+                    // console.log(`define name ${nameCount} ${emptyCount} ${feedNameSet}`)
+                    if (feed.name == '') {
+                        emptyNameCount += 1;
+                        // console.log(`undefine name ${emptyNameCount} ${nameCount} ${emptyCount} ${feedNameSet}`)
+                    }
+                    // console.log(`define ${definedCount} ${allFeeds.length}`)
+                    if (emptyNameCount > 0) {
+                        nameStatus = "name is not defined";
+                    } else {
+                        nameStatus = "name is defined";
+                    }
+                    break;
+                case false:
+                    feedNameSet;
+                    break;
+            }
+        }
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
@@ -51,7 +104,8 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        let menuIconhidden = document.querySelector("body");
+        let menuIconhidden = document.querySelector("body"),
+            menuIcon = document.querySelector(".menu-icon-link");
         it('Menu element is hidden by default', function() {
             expect(menuIconhidden.classList.contains("menu-hidden")).toBe(true);
         });
@@ -61,7 +115,6 @@ $(function() {
          * clicked and does it hide when clicked again.
          */
         it('Menu changes visibility when clicked', function() {
-            menuIcon = document.querySelector(".menu-icon-link");
             menuIcon.click();
             expect(menuIconhidden.classList.contains("menu-hidden")).not.toBe(true);
             menuIcon.click();
